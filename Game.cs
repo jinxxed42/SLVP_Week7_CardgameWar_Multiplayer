@@ -43,9 +43,19 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
             Player Player1 = new Player();
             Player Player2 = new Player();
+            Player Player3 = new Player();
+            Player Player4 = new Player();
+            Player Player5 = new Player();
+            Player Player6 = new Player();
+            Player Player7 = new Player();
             players = new List<Player>();
             players.Add(Player1);
             players.Add(Player2);
+            players.Add(Player3);
+            players.Add(Player4);
+            players.Add(Player5);
+            players.Add(Player6);
+            players.Add(Player7);
             #region
             //This is a region
             #endregion

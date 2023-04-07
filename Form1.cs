@@ -26,7 +26,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             }
 
             dynamicPanel.Location = new Point(10, 10);
-            dynamicPanel.Size = new Size(200, 300); //trying in class ctor
+            //dynamicPanel.Size = new Size(200, 300); //trying in class ctor
 
 
             this.Controls.Add(dynamicPanel);
