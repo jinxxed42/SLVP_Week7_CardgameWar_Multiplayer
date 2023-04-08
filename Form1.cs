@@ -3,6 +3,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
     public partial class Form1 : Form
     {
         Game g = new Game();
+        List<PlayerControl> playerControls;
         //private DynamicPanel dynamicPanel;
 
 
@@ -18,16 +19,17 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             //this.Controls.Add(pnl1);
 
             DynamicPanel dynamicPanel = new DynamicPanel();
+            playerControls = new List<PlayerControl>();
             foreach (Player p in g.players)
             {
                 PlayerControl userControl1 = new PlayerControl(p);
+                playerControls.Add(userControl1);
                 dynamicPanel.AddControl(userControl1);
-
             }
 
             dynamicPanel.Location = new Point(10, 10);
-            //dynamicPanel.Size = new Size(200, 300); //trying in class ctor
-
+            dynamicPanel.Size = new Size(225, 400); //trying in class ctor
+            dynamicPanel.AutoScroll = true;          
 
             this.Controls.Add(dynamicPanel);
 
@@ -35,9 +37,9 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             UserControl1 userControl1 = new UserControl1();
             dynamicPanel.AddControl(userControl1);
             **/
-            /**
-            List<PlayerControl> playerControls = new List<PlayerControl>();
+           
             
+            /**
             foreach (Player p in g.players) 
             {
                 PlayerControl playerControl = new PlayerControl(p);
@@ -105,6 +107,11 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 // DØDSE PÅ DET HER!
                 tbPlayer1.Text = g.Player1Score.ToString();
                 tbPlayer2.Text = g.Player2Score.ToString();
+            }
+
+            foreach (PlayerControl p in playerControls)
+            {
+                p.Update();
             }
         }
     }

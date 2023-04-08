@@ -38,7 +38,7 @@
             // 
             // btnPlay
             // 
-            this.btnPlay.Location = new System.Drawing.Point(345, 309);
+            this.btnPlay.Location = new System.Drawing.Point(415, 273);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(100, 23);
             this.btnPlay.TabIndex = 0;
@@ -49,7 +49,7 @@
             // rtbGame
             // 
             this.rtbGame.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rtbGame.Location = new System.Drawing.Point(309, 84);
+            this.rtbGame.Location = new System.Drawing.Point(387, 84);
             this.rtbGame.Name = "rtbGame";
             this.rtbGame.Size = new System.Drawing.Size(171, 96);
             this.rtbGame.TabIndex = 1;
@@ -57,14 +57,14 @@
             // 
             // tbPlayer1
             // 
-            this.tbPlayer1.Location = new System.Drawing.Point(203, 83);
+            this.tbPlayer1.Location = new System.Drawing.Point(281, 83);
             this.tbPlayer1.Name = "tbPlayer1";
             this.tbPlayer1.Size = new System.Drawing.Size(100, 23);
             this.tbPlayer1.TabIndex = 2;
             // 
             // tbPlayer2
             // 
-            this.tbPlayer2.Location = new System.Drawing.Point(486, 84);
+            this.tbPlayer2.Location = new System.Drawing.Point(564, 84);
             this.tbPlayer2.Name = "tbPlayer2";
             this.tbPlayer2.Size = new System.Drawing.Size(100, 23);
             this.tbPlayer2.TabIndex = 3;
@@ -72,7 +72,7 @@
             // lblPlayer1
             // 
             this.lblPlayer1.AutoSize = true;
-            this.lblPlayer1.Location = new System.Drawing.Point(203, 66);
+            this.lblPlayer1.Location = new System.Drawing.Point(281, 65);
             this.lblPlayer1.Name = "lblPlayer1";
             this.lblPlayer1.Size = new System.Drawing.Size(84, 15);
             this.lblPlayer1.TabIndex = 4;
@@ -81,7 +81,7 @@
             // lblPlayer2
             // 
             this.lblPlayer2.AutoSize = true;
-            this.lblPlayer2.Location = new System.Drawing.Point(486, 66);
+            this.lblPlayer2.Location = new System.Drawing.Point(564, 66);
             this.lblPlayer2.Name = "lblPlayer2";
             this.lblPlayer2.Size = new System.Drawing.Size(84, 15);
             this.lblPlayer2.TabIndex = 5;

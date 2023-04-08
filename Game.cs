@@ -50,12 +50,13 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             Player Player7 = new Player();
             players = new List<Player>();
             players.Add(Player1);
-            players.Add(Player2);
+            players.Add(Player2);            
             players.Add(Player3);
             players.Add(Player4);
             players.Add(Player5);
             players.Add(Player6);
             players.Add(Player7);
+            
             #region
             //This is a region
             #endregion
@@ -88,29 +89,6 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             }
         }
 
-        /**
-        public void ShowDeck()
-        {
-            foreach (Card c in deck)
-            {
-                System.Diagnostics.Debug.WriteLine("Card is: " + c.Value + " of " + c.Suit);
-            }
-            
-        }
-        **/
-
-        /**
-        public void RunDeck()
-        {
-            for (int i = 0; i < 52; i++)
-            {
-                Card c = SelectCard();
-                System.Diagnostics.Debug.WriteLine("Card number " + (i+1) + ": " + c.Value + " of " + c.Suit + " | Cards left: " + deck.Length);
-            }
-            
-        }
-        **/
-
         public Card SelectCard()
         {
             int index = rand.Next(0, deck.Length - 1);
@@ -132,18 +110,29 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
             if (Player1Card.Value > Player2Card.Value)
             {
+                //Player1.Score += 2;
+                players[0].Score += 2;
+
+
                 Player1Score += 2;
                 result = "Player1";
                 //return new Result("Player1", false);
             }
             else if (Player1Card.Value < Player2Card.Value)
             {
+
+                players[1].Score += 2;
+
+
                 Player2Score += 2;
                 result = "Player2";
                 //return new Result("Player2", false);
             }
             else
             {
+                players[0].Score += 1;
+                players[1].Score += 1;
+
                 Player1Score++;
                 Player2Score++;
                 result = "Draw";
