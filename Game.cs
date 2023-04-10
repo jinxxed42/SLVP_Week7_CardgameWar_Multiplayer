@@ -73,7 +73,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             players = new List<Player>();
             for (int i = 0; i < numPlayers; i++) 
             {
-                Player p = new Player($"Player {i}");
+                Player p = new Player($"Player{i+1}");
                 players.Add(p);
             }
         }
@@ -142,7 +142,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             return c;
         }
 
-        public Result PlayRound()
+        public void PlayRound()
         {
             CardValue highestValue = CardValue.Ace;
             foreach (Player p in players)
@@ -215,24 +215,22 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             }
             **/
 
-            if (players[0].CardDeck.Count != 0)
+            if (players[0].CardDeck.Count == 0)           
             {
-                return new Result(result, false);
-            }
-            else
-            {
-                if (Player1Score > Player2Score)
+                GameOver = true;
+                int highScore = 0;
+                Player winner = new Player();
+                foreach (Player p in players)
                 {
-                    return new Result(result, true, "Player1");
+                    if (p.Score > highScore)
+                    {
+                        highScore = p.Score;
+                        winner = p;
+                    }
                 }
-                else if (Player1Score < Player2Score)
-                {
-                    return new Result(result, true, "Player2");
-                }
-                else
-                {
-                    return new Result(result, true, "Draw");
-                }
+
+                MessageBox.Show("The game is over and the winner is " + winner.Name);
+
             }
         }
 

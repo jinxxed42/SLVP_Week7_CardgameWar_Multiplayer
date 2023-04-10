@@ -65,8 +65,11 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 btnPlay.Text = "Play";
             }
 
-            Result res = g.PlayRound();
-            Update(res);
+            //Result res = g.PlayRound();
+            //Update(res);
+            g.PlayRound();
+            Update();
+
         }
 
         /**
@@ -97,6 +100,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             {
                 btnPlay.Text = "Start game!";
                 rtbGame.Text += "\n";
+                /**
                 if (result.GameWinner == "Draw")
                 {
                     MessageBox.Show("The game is over and it was a draw!");
@@ -105,6 +109,40 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 {
                     MessageBox.Show("The game is over and the winner is: " + result.GameWinner + "!");
                 }
+                **/
+            }
+            else
+            {
+                // DØDSE PÅ DET HER!
+                //tbPlayer1.Text = g.Player1Score.ToString();
+                //tbPlayer2.Text = g.Player2Score.ToString();
+            }
+
+            foreach (PlayerControl p in playerControls)
+            {
+                p.Update();
+            }
+        }
+
+        internal void Update()
+        {
+            //rtbGame.Text = "Player 1 drew a " + g.Player1Card.Value.ToString() + " of " + g.Player1Card.Suit.ToString() + "\n";
+            //rtbGame.Text += "Player 2 drew a " + g.Player2Card.Value.ToString() + " of " + g.Player2Card.Suit.ToString() + "\n";
+
+            if (g.GameOver)
+            {
+                btnPlay.Text = "Start game!";
+                rtbGame.Text += "\n";
+                /**
+                if (result.GameWinner == "Draw")
+                {
+                    MessageBox.Show("The game is over and it was a draw!");
+                }
+                else
+                {
+                    MessageBox.Show("The game is over and the winner is: " + result.GameWinner + "!");
+                }
+                **/
             }
             else
             {
@@ -119,4 +157,5 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             }
         }
     }
+
 }

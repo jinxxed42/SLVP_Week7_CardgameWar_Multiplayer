@@ -77,6 +77,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             this.plcPicturebox.Size = new System.Drawing.Size(71, 93);
             this.plcPicturebox.TabIndex = 4;
             this.plcPicturebox.TabStop = false;
+            this.plcPicturebox.SizeMode = PictureBoxSizeMode.StretchImage;
             // 
             // PlayerControl
             // 
@@ -95,9 +96,86 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public void Update()
         {
+            plcLblNameText.Text = player.Name.ToString(); // Skal kun sættes én gang!
             plcLblScoreText.Text = player.Score.ToString();
+
+            string cardString = CardImageFileName(player.CardDrawn);
+            string cardFolder = @"C:\Users\claus\source\repos\SLVP_Week7_CardgameWar_Pictures\Cards\";
+
+            Image image = Image.FromFile(cardFolder + cardString);
+            plcPicturebox.Image = image;
+
+        }
+
+        internal string CardImageFileName(Card card)
+        {
+            string valueCode;
+            switch (card.Value)
+            {
+                case CardValue.Two:
+                    valueCode = "2";
+                    break;
+                case CardValue.Three:
+                    valueCode = "3";
+                    break;
+                case CardValue.Four:
+                    valueCode = "4";
+                    break;
+                case CardValue.Five:
+                    valueCode = "5";
+                    break;
+                case CardValue.Six:
+                    valueCode = "6";
+                    break;
+                case CardValue.Seven:
+                    valueCode = "7";
+                    break;
+                case CardValue.Eight:
+                    valueCode = "8";
+                    break;
+                case CardValue.Nine:
+                    valueCode = "9";
+                    break;
+                case CardValue.Ten:
+                    valueCode = "10";
+                    break;
+                case CardValue.Jack:
+                    valueCode = "J";
+                    break;
+                case CardValue.Queen:
+                    valueCode = "Q";
+                    break;
+                case CardValue.King:
+                    valueCode = "K";
+                    break;
+                case CardValue.Ace:
+                    valueCode = "A";
+                    break;
+                default:
+                    throw new ArgumentException("Invalid card value");
+            }
+
+            string suitCode;
+            switch (card.Suit)
+            {
+                case CardSuit.Clubs:
+                    suitCode = "C";
+                    break;
+                case CardSuit.Diamonds:
+                    suitCode = "D";
+                    break;
+                case CardSuit.Hearts:
+                    suitCode = "H";
+                    break;
+                case CardSuit.Spades:
+                    suitCode = "S";
+                    break;
+                default:
+                    throw new ArgumentException("Invalid card suit");
+            }
+
+            return valueCode + suitCode + ".png";
         }
 
     }
-
 }

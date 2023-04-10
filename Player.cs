@@ -17,6 +17,11 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public string Name { get; set; }
 
+        public Player()
+        {
+            
+        }
+
         public Player(string name)
         {
             CardDeck = new List<Card>();
