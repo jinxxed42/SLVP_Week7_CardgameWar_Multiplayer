@@ -28,81 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnPlay = new System.Windows.Forms.Button();
-            this.rtbGame = new System.Windows.Forms.RichTextBox();
-            this.tbPlayer1 = new System.Windows.Forms.TextBox();
-            this.tbPlayer2 = new System.Windows.Forms.TextBox();
-            this.lblPlayer1 = new System.Windows.Forms.Label();
-            this.lblPlayer2 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            btnPlay = new Button();
+            rtbGame = new RichTextBox();
+            tbPlayer1 = new TextBox();
+            tbPlayer2 = new TextBox();
+            lblPlayer1 = new Label();
+            lblPlayer2 = new Label();
+            tbNumPlayers = new TextBox();
+            SuspendLayout();
             // 
             // btnPlay
             // 
-            this.btnPlay.Location = new System.Drawing.Point(415, 273);
-            this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(100, 23);
-            this.btnPlay.TabIndex = 0;
-            this.btnPlay.Text = "Start game!";
-            this.btnPlay.UseVisualStyleBackColor = true;
-            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            btnPlay.Location = new Point(415, 273);
+            btnPlay.Name = "btnPlay";
+            btnPlay.Size = new Size(100, 23);
+            btnPlay.TabIndex = 0;
+            btnPlay.Text = "Start game!";
+            btnPlay.UseVisualStyleBackColor = true;
+            btnPlay.Click += btnPlay_Click;
             // 
             // rtbGame
             // 
-            this.rtbGame.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.rtbGame.Location = new System.Drawing.Point(387, 84);
-            this.rtbGame.Name = "rtbGame";
-            this.rtbGame.Size = new System.Drawing.Size(171, 96);
-            this.rtbGame.TabIndex = 1;
-            this.rtbGame.Text = "Click the button to play!";
+            rtbGame.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            rtbGame.Location = new Point(387, 84);
+            rtbGame.Name = "rtbGame";
+            rtbGame.Size = new Size(171, 96);
+            rtbGame.TabIndex = 1;
+            rtbGame.Text = "Click the button to play!";
             // 
             // tbPlayer1
             // 
-            this.tbPlayer1.Location = new System.Drawing.Point(281, 83);
-            this.tbPlayer1.Name = "tbPlayer1";
-            this.tbPlayer1.Size = new System.Drawing.Size(100, 23);
-            this.tbPlayer1.TabIndex = 2;
+            tbPlayer1.Location = new Point(281, 83);
+            tbPlayer1.Name = "tbPlayer1";
+            tbPlayer1.Size = new Size(100, 23);
+            tbPlayer1.TabIndex = 2;
             // 
             // tbPlayer2
             // 
-            this.tbPlayer2.Location = new System.Drawing.Point(564, 84);
-            this.tbPlayer2.Name = "tbPlayer2";
-            this.tbPlayer2.Size = new System.Drawing.Size(100, 23);
-            this.tbPlayer2.TabIndex = 3;
+            tbPlayer2.Location = new Point(564, 84);
+            tbPlayer2.Name = "tbPlayer2";
+            tbPlayer2.Size = new Size(100, 23);
+            tbPlayer2.TabIndex = 3;
             // 
             // lblPlayer1
             // 
-            this.lblPlayer1.AutoSize = true;
-            this.lblPlayer1.Location = new System.Drawing.Point(281, 65);
-            this.lblPlayer1.Name = "lblPlayer1";
-            this.lblPlayer1.Size = new System.Drawing.Size(84, 15);
-            this.lblPlayer1.TabIndex = 4;
-            this.lblPlayer1.Text = "Player1 points:";
+            lblPlayer1.AutoSize = true;
+            lblPlayer1.Location = new Point(281, 65);
+            lblPlayer1.Name = "lblPlayer1";
+            lblPlayer1.Size = new Size(84, 15);
+            lblPlayer1.TabIndex = 4;
+            lblPlayer1.Text = "Player1 points:";
             // 
             // lblPlayer2
             // 
-            this.lblPlayer2.AutoSize = true;
-            this.lblPlayer2.Location = new System.Drawing.Point(564, 66);
-            this.lblPlayer2.Name = "lblPlayer2";
-            this.lblPlayer2.Size = new System.Drawing.Size(84, 15);
-            this.lblPlayer2.TabIndex = 5;
-            this.lblPlayer2.Text = "Player2 points:";
+            lblPlayer2.AutoSize = true;
+            lblPlayer2.Location = new Point(564, 66);
+            lblPlayer2.Name = "lblPlayer2";
+            lblPlayer2.Size = new Size(84, 15);
+            lblPlayer2.TabIndex = 5;
+            lblPlayer2.Text = "Player2 points:";
+            // 
+            // tbNumPlayers
+            // 
+            tbNumPlayers.Location = new Point(415, 244);
+            tbNumPlayers.Name = "tbNumPlayers";
+            tbNumPlayers.Size = new Size(100, 23);
+            tbNumPlayers.TabIndex = 6;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblPlayer2);
-            this.Controls.Add(this.lblPlayer1);
-            this.Controls.Add(this.tbPlayer2);
-            this.Controls.Add(this.tbPlayer1);
-            this.Controls.Add(this.rtbGame);
-            this.Controls.Add(this.btnPlay);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(tbNumPlayers);
+            Controls.Add(lblPlayer2);
+            Controls.Add(lblPlayer1);
+            Controls.Add(tbPlayer2);
+            Controls.Add(tbPlayer1);
+            Controls.Add(rtbGame);
+            Controls.Add(btnPlay);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -113,5 +121,6 @@
         private TextBox tbPlayer2;
         private Label lblPlayer1;
         private Label lblPlayer2;
+        private TextBox tbNumPlayers;
     }
 }

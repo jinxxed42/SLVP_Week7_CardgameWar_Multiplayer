@@ -10,8 +10,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 {
     internal class Game
     {
-        private Card[] deck;
-        private int deckIndex;
+        private List<Card> deck;
+        //private int deckIndex;
         public List<Player> players;
 
         // Let's remove Result and integrate the properties in Game.cs!
@@ -40,7 +40,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             System.Diagnostics.Debug.WriteLine("5 spiller: " + 52 * (int)Math.Ceiling(5 / 2.0)); // 156
             System.Diagnostics.Debug.WriteLine("6 spiller: " + 52 * (int)Math.Ceiling(6 / 2.0)); // 156
 
-
+            /**
             Player Player1 = new Player();
             Player Player2 = new Player();
             Player Player3 = new Player();
@@ -56,18 +56,35 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             players.Add(Player5);
             players.Add(Player6);
             players.Add(Player7);
-            
+            **/
+
             #region
             //This is a region
             #endregion
         }
 
+        public Game(int numPlayers)
+        {
+            
+        }
+
+        public void StartGame(int numPlayers)
+        {
+            players = new List<Player>();
+            for (int i = 0; i < numPlayers; i++) 
+            {
+                Player p = new Player($"Player {i}");
+                players.Add(p);
+            }
+        }
+
+
         public void FillDeck()
         {
-            int deckSize = 52 * (int)Math.Ceiling(players.Count / 2.0); // Skal rundes op! VIRKER!! Så skal kortene bare fordeles, eller køres 26 runder.
-
-            deck = new Card[52];
-            deckIndex = 0;
+            int deckSize = (int)Math.Ceiling(players.Count / 2.0); // Skal rundes op! VIRKER!! Så skal kortene bare fordeles, eller køres 26 runder.
+            deck = new List<Card>();
+            //deck = new Card[52];
+            //deckIndex = 0;
 
             foreach (Player p in players)
             {
@@ -78,7 +95,28 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             Player2Score = 0;
 
 
+            for (int i = 0; i < deckSize; i++) 
+            {
+                foreach (CardSuit cSuit in Enum.GetValues(typeof(CardSuit)))
+                {
+                    foreach (CardValue cValue in Enum.GetValues(typeof(CardValue)))
+                    {
+                        deck.Add(new Card(cValue, cSuit));
+                    }
+                }
+            }
 
+            foreach (Player p in players)
+            {
+                for (int i = 0; i < 26; i++) 
+                { 
+                    int index = rand.Next(0, deck.Count - 1);
+                    Card c = deck[index];
+                    deck.RemoveAt(index);               
+                    p.CardDeck.Add(c);
+                }
+            }
+            /**
             foreach (CardSuit cSuit in Enum.GetValues(typeof(CardSuit)))
             {
                 foreach (CardValue cValue in Enum.GetValues(typeof(CardValue)))
@@ -87,27 +125,64 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                     deckIndex++;
                 }
             }
+            **/
         }
 
-        public Card SelectCard()
+        public Card SelectCard(Player player)
         {
-            int index = rand.Next(0, deck.Length - 1);
-            Card c = deck[index];
-            for (int i = index; i < deck.Length - 1; i++)
-            {
-                deck[i] = deck[i + 1];
-            }
-            Array.Resize(ref deck, deck.Length - 1);
+            //foreach (Player p in players)
+            //{
+                Card c = player.CardDeck[0];
+            player.CardDeck.RemoveAt(0);
+            //}
+
+            //int index = rand.Next(0, deck.Count - 1);
+            //Card c = deck[index];
+            //deck.RemoveAt(index);
             return c;
         }
 
         public Result PlayRound()
         {
-            Player1Card = SelectCard();
-            Player2Card = SelectCard();
+            CardValue highestValue = CardValue.Ace;
+            foreach (Player p in players)
+            {
+                p.CardDrawn = SelectCard(p);
+                if (p.CardDrawn.Value > highestValue)
+                {
+                    highestValue = p.CardDrawn.Value;
+                }
+            }
+
+            int numPlayersWithMaxValue = 0;
+
+            foreach (Player p in players)
+            {
+                if (p.CardDrawn.Value == highestValue)
+                {
+                    numPlayersWithMaxValue++;
+                }
+            }
+
+            if (numPlayersWithMaxValue > 1) { 
+                foreach (Player p in players)
+                {
+                    if (p.CardDrawn.Value == highestValue)
+                    {
+                        p.Score++;
+                    }
+                }
+            }
+            else
+            {
+                players.Find(p => p.CardDrawn.Value == highestValue).Score += 2;
+            }
+
+            // Player1Card = SelectCard();
+            // Player2Card = SelectCard();
 
             string result = "";
-
+            /**
             if (Player1Card.Value > Player2Card.Value)
             {
                 //Player1.Score += 2;
@@ -138,8 +213,9 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 result = "Draw";
                 //return new Result("Draw", false);
             }
+            **/
 
-            if (deck.Length != 0)
+            if (players[0].CardDeck.Count != 0)
             {
                 return new Result(result, false);
             }

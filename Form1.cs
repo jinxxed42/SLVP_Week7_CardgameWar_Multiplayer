@@ -18,27 +18,14 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             //Panel pnl1 = new Panel();
             //this.Controls.Add(pnl1);
 
-            DynamicPanel dynamicPanel = new DynamicPanel();
-            playerControls = new List<PlayerControl>();
-            foreach (Player p in g.players)
-            {
-                PlayerControl userControl1 = new PlayerControl(p);
-                playerControls.Add(userControl1);
-                dynamicPanel.AddControl(userControl1);
-            }
 
-            dynamicPanel.Location = new Point(10, 10);
-            dynamicPanel.Size = new Size(225, 400); //trying in class ctor
-            dynamicPanel.AutoScroll = true;          
-
-            this.Controls.Add(dynamicPanel);
 
             /**
             UserControl1 userControl1 = new UserControl1();
             dynamicPanel.AddControl(userControl1);
             **/
-           
-            
+
+
             /**
             foreach (Player p in g.players) 
             {
@@ -57,6 +44,23 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
             if (btnPlay.Text == "Start game!")
             {
+                int numPlayers = int.Parse(tbNumPlayers.Text);
+                g.StartGame(numPlayers);
+
+                DynamicPanel dynamicPanel = new DynamicPanel();
+                playerControls = new List<PlayerControl>();
+                foreach (Player p in g.players)
+                {
+                    PlayerControl userControl1 = new PlayerControl(p);
+                    playerControls.Add(userControl1);
+                    dynamicPanel.AddControl(userControl1);
+                }
+
+                dynamicPanel.Location = new Point(10, 10);
+                dynamicPanel.Size = new Size(225, 400); //trying in class ctor
+                dynamicPanel.AutoScroll = true;
+
+                this.Controls.Add(dynamicPanel);
                 g.FillDeck();
                 btnPlay.Text = "Play";
             }
@@ -86,8 +90,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         internal void Update(Result result)
         {
-            rtbGame.Text = "Player 1 drew a " + g.Player1Card.Value.ToString() + " of " + g.Player1Card.Suit.ToString() + "\n";
-            rtbGame.Text += "Player 2 drew a " + g.Player2Card.Value.ToString() + " of " + g.Player2Card.Suit.ToString() + "\n";
+            //rtbGame.Text = "Player 1 drew a " + g.Player1Card.Value.ToString() + " of " + g.Player1Card.Suit.ToString() + "\n";
+            //rtbGame.Text += "Player 2 drew a " + g.Player2Card.Value.ToString() + " of " + g.Player2Card.Suit.ToString() + "\n";
 
             if (result.GameOver)
             {
@@ -105,8 +109,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             else
             {
                 // DØDSE PÅ DET HER!
-                tbPlayer1.Text = g.Player1Score.ToString();
-                tbPlayer2.Text = g.Player2Score.ToString();
+                //tbPlayer1.Text = g.Player1Score.ToString();
+                //tbPlayer2.Text = g.Player2Score.ToString();
             }
 
             foreach (PlayerControl p in playerControls)
