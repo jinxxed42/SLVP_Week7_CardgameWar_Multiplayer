@@ -100,7 +100,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             plcLblScoreText.Text = player.Score.ToString();
 
             string cardString = CardImageFileName(player.CardDrawn);
-            string cardFolder = @"C:\Users\claus\source\repos\SLVP_Week7_CardgameWar_Pictures\Cards\";
+            string cardFolder = @"C:\Users\claus\source\repos\SLVP_Week7_CardgameWar_Multiplayer\Cards\";
 
             Image image = Image.FromFile(cardFolder + cardString);
             plcPicturebox.Image = image;

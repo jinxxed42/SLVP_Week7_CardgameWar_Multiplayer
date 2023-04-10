@@ -45,10 +45,12 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             #endregion
         }
 
+        /**
         public Game(int numPlayers)
         {
             
         }
+        **/
 
         public void StartGame(int numPlayers)
         {
@@ -124,6 +126,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             return c;
         }
 
+        // SKAL FIKSES. DER BLIVER TRUKKET NOGET KORT EFTER SIDSTE RUNDE, SELVOM VINDER ERKLÆRES!
         public void PlayRound()
         {
             CardValue highestValue = CardValue.Ace;

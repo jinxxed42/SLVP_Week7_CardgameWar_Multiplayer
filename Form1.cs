@@ -91,6 +91,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         }
         **/
 
+        /**
         internal void Update(Result result)
         {
             //rtbGame.Text = "Player 1 drew a " + g.Player1Card.Value.ToString() + " of " + g.Player1Card.Suit.ToString() + "\n";
@@ -100,7 +101,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             {
                 btnPlay.Text = "Start game!";
                 rtbGame.Text += "\n";
-                /**
+                
                 if (result.GameWinner == "Draw")
                 {
                     MessageBox.Show("The game is over and it was a draw!");
@@ -109,7 +110,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 {
                     MessageBox.Show("The game is over and the winner is: " + result.GameWinner + "!");
                 }
-                **/
+                
             }
             else
             {
@@ -123,6 +124,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 p.Update();
             }
         }
+        **/
 
         internal void Update()
         {
