@@ -47,20 +47,37 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 int numPlayers = int.Parse(tbNumPlayers.Text);
                 g.StartGame(numPlayers);
 
+                int addedPanels = 0;
+
                 DynamicPanel dynamicPanel = new DynamicPanel();
+                dynamicPanel.Location = new Point(10, 10);
+
+
                 playerControls = new List<PlayerControl>();
                 foreach (Player p in g.players)
                 {
+                    if (addedPanels == 5)
+                    {
+                        Point newLoc = new Point(dynamicPanel.Location.X + 225, dynamicPanel.Location.Y);
+                        this.Controls.Add(dynamicPanel);
+                        dynamicPanel = new DynamicPanel();
+                        dynamicPanel.Location = newLoc; 
+                        addedPanels = 0;
+                        this.ClientSize = new Size(this.Width + 225, this.Height);
+                    }
                     PlayerControl userControl1 = new PlayerControl(p);
                     playerControls.Add(userControl1);
                     dynamicPanel.AddControl(userControl1);
+                    dynamicPanel.Size = new Size(225, 400); //trying in class ctor
+                    dynamicPanel.AutoScroll = true;
+                    addedPanels++;
                 }
-
-                dynamicPanel.Location = new Point(10, 10);
-                dynamicPanel.Size = new Size(225, 400); //trying in class ctor
-                dynamicPanel.AutoScroll = true;
-
                 this.Controls.Add(dynamicPanel);
+
+
+
+
+
                 g.FillDeck();
                 btnPlay.Text = "Play";
             }

@@ -39,7 +39,7 @@
             // 
             // btnPlay
             // 
-            btnPlay.Location = new Point(415, 273);
+            btnPlay.Location = new Point(425, 243);
             btnPlay.Name = "btnPlay";
             btnPlay.Size = new Size(100, 23);
             btnPlay.TabIndex = 0;
@@ -50,7 +50,7 @@
             // rtbGame
             // 
             rtbGame.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            rtbGame.Location = new Point(387, 84);
+            rtbGame.Location = new Point(402, 83);
             rtbGame.Name = "rtbGame";
             rtbGame.Size = new Size(171, 96);
             rtbGame.TabIndex = 1;
@@ -58,14 +58,14 @@
             // 
             // tbPlayer1
             // 
-            tbPlayer1.Location = new Point(281, 83);
+            tbPlayer1.Location = new Point(296, 83);
             tbPlayer1.Name = "tbPlayer1";
             tbPlayer1.Size = new Size(100, 23);
             tbPlayer1.TabIndex = 2;
             // 
             // tbPlayer2
             // 
-            tbPlayer2.Location = new Point(564, 84);
+            tbPlayer2.Location = new Point(579, 73);
             tbPlayer2.Name = "tbPlayer2";
             tbPlayer2.Size = new Size(100, 23);
             tbPlayer2.TabIndex = 3;
@@ -73,7 +73,7 @@
             // lblPlayer1
             // 
             lblPlayer1.AutoSize = true;
-            lblPlayer1.Location = new Point(281, 65);
+            lblPlayer1.Location = new Point(296, 55);
             lblPlayer1.Name = "lblPlayer1";
             lblPlayer1.Size = new Size(84, 15);
             lblPlayer1.TabIndex = 4;
@@ -82,7 +82,7 @@
             // lblPlayer2
             // 
             lblPlayer2.AutoSize = true;
-            lblPlayer2.Location = new Point(564, 66);
+            lblPlayer2.Location = new Point(578, 55);
             lblPlayer2.Name = "lblPlayer2";
             lblPlayer2.Size = new Size(84, 15);
             lblPlayer2.TabIndex = 5;
@@ -90,7 +90,7 @@
             // 
             // tbNumPlayers
             // 
-            tbNumPlayers.Location = new Point(415, 244);
+            tbNumPlayers.Location = new Point(425, 199);
             tbNumPlayers.Name = "tbNumPlayers";
             tbNumPlayers.Size = new Size(100, 23);
             tbNumPlayers.TabIndex = 6;
@@ -99,7 +99,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(708, 450);
             Controls.Add(tbNumPlayers);
             Controls.Add(lblPlayer2);
             Controls.Add(lblPlayer1);
