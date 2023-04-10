@@ -40,24 +40,6 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             System.Diagnostics.Debug.WriteLine("5 spiller: " + 52 * (int)Math.Ceiling(5 / 2.0)); // 156
             System.Diagnostics.Debug.WriteLine("6 spiller: " + 52 * (int)Math.Ceiling(6 / 2.0)); // 156
 
-            /**
-            Player Player1 = new Player();
-            Player Player2 = new Player();
-            Player Player3 = new Player();
-            Player Player4 = new Player();
-            Player Player5 = new Player();
-            Player Player6 = new Player();
-            Player Player7 = new Player();
-            players = new List<Player>();
-            players.Add(Player1);
-            players.Add(Player2);            
-            players.Add(Player3);
-            players.Add(Player4);
-            players.Add(Player5);
-            players.Add(Player6);
-            players.Add(Player7);
-            **/
-
             #region
             //This is a region
             #endregion
@@ -178,58 +160,34 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 players.Find(p => p.CardDrawn.Value == highestValue).Score += 2;
             }
 
-            // Player1Card = SelectCard();
-            // Player2Card = SelectCard();
-
-            string result = "";
-            /**
-            if (Player1Card.Value > Player2Card.Value)
-            {
-                //Player1.Score += 2;
-                players[0].Score += 2;
-
-
-                Player1Score += 2;
-                result = "Player1";
-                //return new Result("Player1", false);
-            }
-            else if (Player1Card.Value < Player2Card.Value)
-            {
-
-                players[1].Score += 2;
-
-
-                Player2Score += 2;
-                result = "Player2";
-                //return new Result("Player2", false);
-            }
-            else
-            {
-                players[0].Score += 1;
-                players[1].Score += 1;
-
-                Player1Score++;
-                Player2Score++;
-                result = "Draw";
-                //return new Result("Draw", false);
-            }
-            **/
-
             if (players[0].CardDeck.Count == 0)           
             {
                 GameOver = true;
                 int highScore = 0;
+                int numWinners = 1;
                 Player winner = new Player();
                 foreach (Player p in players)
                 {
                     if (p.Score > highScore)
                     {
                         highScore = p.Score;
+                        numWinners = 1;
                         winner = p;
+                    }
+                    else if (p.Score == highScore)
+                    {
+                        numWinners++;
                     }
                 }
 
-                MessageBox.Show("The game is over and the winner is " + winner.Name);
+                if (numWinners == 1) 
+                { 
+                    MessageBox.Show("The game is over and the winner is " + winner.Name);
+                }
+                else
+                {
+                    MessageBox.Show("The game is over and it was a draw!");
+                }
 
             }
         }
