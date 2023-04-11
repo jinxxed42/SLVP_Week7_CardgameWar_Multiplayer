@@ -11,16 +11,18 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 {
     public partial class DynamicPanel : Panel
     {
+
+
         private List<UserControl> _userControls = new List<UserControl>();
 
         public IEnumerable<UserControl> UserControls => _userControls;
 
-        /**
+
         public DynamicPanel()
         {
-            this.Size = new Size(100,100);
+            //this.BorderStyle = BorderStyle.FixedSingle;
         }
-        **/
+
 
         public void AddControl(UserControl userControl)
         {
@@ -36,13 +38,18 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             UpdateLayout();
         }
 
+        private void InitializeComponent()
+        {
+
+        }
+
         private void UpdateLayout()
         {
             int yPos = 0;
             foreach (var control in _userControls)
             {
                 control.Location = new Point(0, yPos);
-                yPos += control.Height;
+                yPos += control.Height - 1;
             }
             Height = yPos;
         }

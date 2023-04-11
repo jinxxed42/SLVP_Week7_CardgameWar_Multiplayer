@@ -7,36 +7,9 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         //private DynamicPanel dynamicPanel;
 
 
-        // SELVFØLGELIG BLIVER DET PROBLEM AT DESIGNE NOGET PÅ ET DYNAMISK PANEL???
-
         public Form1()
         {
             InitializeComponent();
-            //tlp1
-            //tlp1.RowCount = 1;
-            //tlp1.ColumnCount = 1;
-            //Panel pnl1 = new Panel();
-            //this.Controls.Add(pnl1);
-
-
-
-            /**
-            UserControl1 userControl1 = new UserControl1();
-            dynamicPanel.AddControl(userControl1);
-            **/
-
-
-            /**
-            foreach (Player p in g.players) 
-            {
-                PlayerControl playerControl = new PlayerControl(p);
-                playerControls.Add(playerControl);
-                //tlp1.Controls.Add(playerControl);
-                pnl1.Controls.Add(playerControl);
-            }
-            **/
-            //tlp1.Show();
-            //pnl1.Show();
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
@@ -44,39 +17,55 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
             if (btnPlay.Text == "Start game!")
             {
+                this.Size = new Size(725, 600);
+
                 int numPlayers = int.Parse(tbNumPlayers.Text);
                 g.StartGame(numPlayers);
 
                 int addedPanels = 0;
+                //int addedColumns = 0;
 
                 DynamicPanel dynamicPanel = new DynamicPanel();
-                dynamicPanel.Location = new Point(10, 10);
+                dynamicPanel.Location = new Point(200, 10);
 
 
                 playerControls = new List<PlayerControl>();
+
                 foreach (Player p in g.players)
                 {
-                    if (addedPanels == 5)
+                    // Det smider alle ekstra paneler ind i sidste kolonne....de skal fordeles!
+                    // Jeg bliver nødt til at beregne hvor mange der skal laves, dele med 4 og så fordele dem udover panelerne.
+
+                    // DET HER VIRKER FORNUFTIGT!!! GÅ EFTER AT LAVE ET STORT DYNAMIC PANEL, SOM DE ALLE SMIDES I I NYE KOLONNER,
+                    // OG SÅ EN SCROLL BAR NEDERST PÅ DEN!!!!
+
+
+                    if (addedPanels == 4)
                     {
-                        Point newLoc = new Point(dynamicPanel.Location.X + 225, dynamicPanel.Location.Y);
-                        this.Controls.Add(dynamicPanel);
-                        dynamicPanel = new DynamicPanel();
-                        dynamicPanel.Location = newLoc; 
-                        addedPanels = 0;
-                        this.ClientSize = new Size(this.Width + 225, this.Height);
+                        //if (addedColumns < 3)
+                        //{
+                        
+                            Point newLoc = new Point(dynamicPanel.Location.X + 199, dynamicPanel.Location.Y);
+                            this.Controls.Add(dynamicPanel);
+                            dynamicPanel = new DynamicPanel();
+                            dynamicPanel.Location = newLoc;
+                            addedPanels = 0;
+                            this.Size = new Size(this.Width + 210, this.Height);
+                        
+                            //addedColumns++;
+                        //}
                     }
                     PlayerControl userControl1 = new PlayerControl(p);
                     playerControls.Add(userControl1);
+
                     dynamicPanel.AddControl(userControl1);
-                    dynamicPanel.Size = new Size(225, 400); //trying in class ctor
+
+
+                    dynamicPanel.Size = new Size(200, 500);
                     dynamicPanel.AutoScroll = true;
                     addedPanels++;
                 }
                 this.Controls.Add(dynamicPanel);
-
-
-
-
 
                 g.FillDeck();
                 btnPlay.Text = "Play";

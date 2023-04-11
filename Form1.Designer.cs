@@ -30,18 +30,15 @@
         {
             btnPlay = new Button();
             rtbGame = new RichTextBox();
-            tbPlayer1 = new TextBox();
-            tbPlayer2 = new TextBox();
-            lblPlayer1 = new Label();
-            lblPlayer2 = new Label();
             tbNumPlayers = new TextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // btnPlay
             // 
-            btnPlay.Location = new Point(425, 243);
+            btnPlay.Location = new Point(12, 192);
             btnPlay.Name = "btnPlay";
-            btnPlay.Size = new Size(100, 23);
+            btnPlay.Size = new Size(108, 23);
             btnPlay.TabIndex = 0;
             btnPlay.Text = "Start game!";
             btnPlay.UseVisualStyleBackColor = true;
@@ -50,61 +47,35 @@
             // rtbGame
             // 
             rtbGame.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            rtbGame.Location = new Point(402, 83);
+            rtbGame.Location = new Point(12, 12);
             rtbGame.Name = "rtbGame";
-            rtbGame.Size = new Size(171, 96);
+            rtbGame.Size = new Size(136, 96);
             rtbGame.TabIndex = 1;
             rtbGame.Text = "Click the button to play!";
             // 
-            // tbPlayer1
-            // 
-            tbPlayer1.Location = new Point(296, 83);
-            tbPlayer1.Name = "tbPlayer1";
-            tbPlayer1.Size = new Size(100, 23);
-            tbPlayer1.TabIndex = 2;
-            // 
-            // tbPlayer2
-            // 
-            tbPlayer2.Location = new Point(579, 73);
-            tbPlayer2.Name = "tbPlayer2";
-            tbPlayer2.Size = new Size(100, 23);
-            tbPlayer2.TabIndex = 3;
-            // 
-            // lblPlayer1
-            // 
-            lblPlayer1.AutoSize = true;
-            lblPlayer1.Location = new Point(296, 55);
-            lblPlayer1.Name = "lblPlayer1";
-            lblPlayer1.Size = new Size(84, 15);
-            lblPlayer1.TabIndex = 4;
-            lblPlayer1.Text = "Player1 points:";
-            // 
-            // lblPlayer2
-            // 
-            lblPlayer2.AutoSize = true;
-            lblPlayer2.Location = new Point(578, 55);
-            lblPlayer2.Name = "lblPlayer2";
-            lblPlayer2.Size = new Size(84, 15);
-            lblPlayer2.TabIndex = 5;
-            lblPlayer2.Text = "Player2 points:";
-            // 
             // tbNumPlayers
             // 
-            tbNumPlayers.Location = new Point(425, 199);
+            tbNumPlayers.Location = new Point(12, 150);
             tbNumPlayers.Name = "tbNumPlayers";
-            tbNumPlayers.Size = new Size(100, 23);
+            tbNumPlayers.Size = new Size(108, 23);
             tbNumPlayers.TabIndex = 6;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 122);
+            label1.Name = "label1";
+            label1.Size = new Size(108, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Number of players:";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(708, 450);
+            ClientSize = new Size(709, 561);
+            Controls.Add(label1);
             Controls.Add(tbNumPlayers);
-            Controls.Add(lblPlayer2);
-            Controls.Add(lblPlayer1);
-            Controls.Add(tbPlayer2);
-            Controls.Add(tbPlayer1);
             Controls.Add(rtbGame);
             Controls.Add(btnPlay);
             Name = "Form1";
@@ -117,10 +88,7 @@
 
         private Button btnPlay;
         private RichTextBox rtbGame;
-        private TextBox tbPlayer1;
-        private TextBox tbPlayer2;
-        private Label lblPlayer1;
-        private Label lblPlayer2;
         private TextBox tbNumPlayers;
+        private Label label1;
     }
 }

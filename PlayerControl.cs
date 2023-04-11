@@ -26,72 +26,73 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         private void InitializeComponent()
         {
-            this.plcLblName = new System.Windows.Forms.Label();
-            this.plcLblScore = new System.Windows.Forms.Label();
-            this.plcLblNameText = new System.Windows.Forms.Label();
-            this.plcLblScoreText = new System.Windows.Forms.Label();
-            this.plcPicturebox = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.plcPicturebox)).BeginInit();
-            this.SuspendLayout();
+            plcLblName = new Label();
+            plcLblScore = new Label();
+            plcLblNameText = new Label();
+            plcLblScoreText = new Label();
+            plcPicturebox = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)plcPicturebox).BeginInit();
+            SuspendLayout();
             // 
             // plcLblName
             // 
-            this.plcLblName.AutoSize = true;
-            this.plcLblName.Location = new System.Drawing.Point(12, 30);
-            this.plcLblName.Name = "plcLblName";
-            this.plcLblName.Size = new System.Drawing.Size(42, 15);
-            this.plcLblName.TabIndex = 0;
-            this.plcLblName.Text = "Name:";
+            plcLblName.AutoSize = true;
+            plcLblName.Location = new Point(12, 20);
+            plcLblName.Name = "plcLblName";
+            plcLblName.Size = new Size(42, 15);
+            plcLblName.TabIndex = 0;
+            plcLblName.Text = "Name:";
             // 
             // plcLblScore
             // 
-            this.plcLblScore.AutoSize = true;
-            this.plcLblScore.Location = new System.Drawing.Point(12, 60);
-            this.plcLblScore.Name = "plcLblScore";
-            this.plcLblScore.Size = new System.Drawing.Size(39, 15);
-            this.plcLblScore.TabIndex = 1;
-            this.plcLblScore.Text = "Score:";
+            plcLblScore.AutoSize = true;
+            plcLblScore.Location = new Point(12, 50);
+            plcLblScore.Name = "plcLblScore";
+            plcLblScore.Size = new Size(39, 15);
+            plcLblScore.TabIndex = 1;
+            plcLblScore.Text = "Score:";
             // 
             // plcLblNameText
             // 
-            this.plcLblNameText.AutoSize = true;
-            this.plcLblNameText.Location = new System.Drawing.Point(60, 30);
-            this.plcLblNameText.Name = "plcLblNameText";
-            this.plcLblNameText.Size = new System.Drawing.Size(12, 15);
-            this.plcLblNameText.TabIndex = 2;
-            this.plcLblNameText.Text = "-";
+            plcLblNameText.AutoSize = true;
+            plcLblNameText.Location = new Point(60, 20);
+            plcLblNameText.Name = "plcLblNameText";
+            plcLblNameText.Size = new Size(12, 15);
+            plcLblNameText.TabIndex = 2;
+            plcLblNameText.Text = "-";
             // 
             // plcLblScoreText
             // 
-            this.plcLblScoreText.AutoSize = true;
-            this.plcLblScoreText.Location = new System.Drawing.Point(59, 60);
-            this.plcLblScoreText.Name = "plcLblScoreText";
-            this.plcLblScoreText.Size = new System.Drawing.Size(13, 15);
-            this.plcLblScoreText.TabIndex = 3;
-            this.plcLblScoreText.Text = "0";
+            plcLblScoreText.AutoSize = true;
+            plcLblScoreText.Location = new Point(59, 50);
+            plcLblScoreText.Name = "plcLblScoreText";
+            plcLblScoreText.Size = new Size(13, 15);
+            plcLblScoreText.TabIndex = 3;
+            plcLblScoreText.Text = "0";
             // 
             // plcPicturebox
             // 
-            this.plcPicturebox.Location = new System.Drawing.Point(109, 13);
-            this.plcPicturebox.Name = "plcPicturebox";
-            this.plcPicturebox.Size = new System.Drawing.Size(71, 93);
-            this.plcPicturebox.TabIndex = 4;
-            this.plcPicturebox.TabStop = false;
-            this.plcPicturebox.SizeMode = PictureBoxSizeMode.StretchImage;
+            plcPicturebox.BorderStyle = BorderStyle.FixedSingle;
+            plcPicturebox.Location = new Point(120, 15);
+            plcPicturebox.Name = "plcPicturebox";
+            plcPicturebox.Size = new Size(70, 93);
+            plcPicturebox.SizeMode = PictureBoxSizeMode.StretchImage;
+            plcPicturebox.TabIndex = 4;
+            plcPicturebox.TabStop = false;
             // 
             // PlayerControl
             // 
-            this.Controls.Add(this.plcPicturebox);
-            this.Controls.Add(this.plcLblScoreText);
-            this.Controls.Add(this.plcLblNameText);
-            this.Controls.Add(this.plcLblScore);
-            this.Controls.Add(this.plcLblName);
-            this.Name = "PlayerControl";
-            this.Size = new System.Drawing.Size(190, 120);
-            ((System.ComponentModel.ISupportInitialize)(this.plcPicturebox)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            BorderStyle = BorderStyle.FixedSingle;
+            Controls.Add(plcPicturebox);
+            Controls.Add(plcLblScoreText);
+            Controls.Add(plcLblNameText);
+            Controls.Add(plcLblScore);
+            Controls.Add(plcLblName);
+            Name = "PlayerControl";
+            Size = new Size(200, 125);
+            ((System.ComponentModel.ISupportInitialize)plcPicturebox).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         public void Update()
