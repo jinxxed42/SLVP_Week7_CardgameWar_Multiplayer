@@ -32,6 +32,8 @@
             rtbGame = new RichTextBox();
             tbNumPlayers = new TextBox();
             label1 = new Label();
+            lblRounds = new Label();
+            lblRoundsText = new Label();
             SuspendLayout();
             // 
             // btnPlay
@@ -69,17 +71,37 @@
             label1.TabIndex = 7;
             label1.Text = "Number of players:";
             // 
+            // lblRounds
+            // 
+            lblRounds.AutoSize = true;
+            lblRounds.Location = new Point(12, 239);
+            lblRounds.Name = "lblRounds";
+            lblRounds.Size = new Size(50, 15);
+            lblRounds.TabIndex = 8;
+            lblRounds.Text = "Rounds:";
+            // 
+            // lblRoundsText
+            // 
+            lblRoundsText.AutoSize = true;
+            lblRoundsText.Location = new Point(68, 239);
+            lblRoundsText.Name = "lblRoundsText";
+            lblRoundsText.Size = new Size(13, 15);
+            lblRoundsText.TabIndex = 9;
+            lblRoundsText.Text = "0";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(709, 561);
+            ClientSize = new Size(484, 561);
+            Controls.Add(lblRoundsText);
+            Controls.Add(lblRounds);
             Controls.Add(label1);
             Controls.Add(tbNumPlayers);
             Controls.Add(rtbGame);
             Controls.Add(btnPlay);
             Name = "Form1";
-            Text = "Form1";
+            Text = "War - Multiplayer";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -90,5 +112,7 @@
         private RichTextBox rtbGame;
         private TextBox tbNumPlayers;
         private Label label1;
+        private Label lblRounds;
+        private Label lblRoundsText;
     }
 }

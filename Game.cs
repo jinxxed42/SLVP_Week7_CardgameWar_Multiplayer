@@ -54,6 +54,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public void StartGame(int numPlayers)
         {
+            GameOver = false;
             players = new List<Player>();
             for (int i = 0; i < numPlayers; i++) 
             {
@@ -127,6 +128,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         }
 
         // SKAL FIKSES. DER BLIVER TRUKKET NOGET KORT EFTER SIDSTE RUNDE, SELVOM VINDER ERKLÆRES!
+        // Virker bare til at vinderen erklæres, før kortet er trukket hyrh. Det løses ved messagebox i form i stedet.
         public void PlayRound()
         {
             CardValue highestValue = CardValue.Ace;
@@ -185,11 +187,11 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
                 if (numWinners == 1) 
                 { 
-                    MessageBox.Show("The game is over and the winner is " + winner.Name);
+                    GameWinner = "The game is over and the winner is " + winner.Name;
                 }
                 else
                 {
-                    MessageBox.Show("The game is over and it was a draw!");
+                    GameWinner = "The game is over and it was a draw!";
                 }
 
             }

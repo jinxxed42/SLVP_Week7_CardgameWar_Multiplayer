@@ -95,9 +95,14 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             PerformLayout();
         }
 
+        public void Initialize()
+        {
+            plcLblNameText.Text = player.Name.ToString();
+            plcLblScoreText.Text = player.Score.ToString();
+        }
+
         public void Update()
         {
-            plcLblNameText.Text = player.Name.ToString(); // Skal kun sættes én gang!
             plcLblScoreText.Text = player.Score.ToString();
 
             string cardString = CardImageFileName(player.CardDrawn);
