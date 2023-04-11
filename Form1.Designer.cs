@@ -38,7 +38,7 @@
             // 
             // btnPlay
             // 
-            btnPlay.Location = new Point(12, 192);
+            btnPlay.Location = new Point(12, 231);
             btnPlay.Name = "btnPlay";
             btnPlay.Size = new Size(108, 23);
             btnPlay.TabIndex = 0;
@@ -48,16 +48,16 @@
             // 
             // rtbGame
             // 
-            rtbGame.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            rtbGame.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             rtbGame.Location = new Point(12, 12);
             rtbGame.Name = "rtbGame";
-            rtbGame.Size = new Size(136, 96);
+            rtbGame.Size = new Size(136, 132);
             rtbGame.TabIndex = 1;
-            rtbGame.Text = "Click the button to play!";
+            rtbGame.Text = "Click the button to play!\n\nThe game will technically\nsupport a number of\nplayers up to the limit\nof an integer, but it will\nlag badly for a high\nnumber of players.";
             // 
             // tbNumPlayers
             // 
-            tbNumPlayers.Location = new Point(12, 150);
+            tbNumPlayers.Location = new Point(12, 192);
             tbNumPlayers.Name = "tbNumPlayers";
             tbNumPlayers.Size = new Size(108, 23);
             tbNumPlayers.TabIndex = 6;
@@ -65,7 +65,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 122);
+            label1.Location = new Point(12, 174);
             label1.Name = "label1";
             label1.Size = new Size(108, 15);
             label1.TabIndex = 7;
@@ -74,7 +74,7 @@
             // lblRounds
             // 
             lblRounds.AutoSize = true;
-            lblRounds.Location = new Point(12, 239);
+            lblRounds.Location = new Point(12, 267);
             lblRounds.Name = "lblRounds";
             lblRounds.Size = new Size(50, 15);
             lblRounds.TabIndex = 8;
@@ -83,7 +83,7 @@
             // lblRoundsText
             // 
             lblRoundsText.AutoSize = true;
-            lblRoundsText.Location = new Point(68, 239);
+            lblRoundsText.Location = new Point(68, 267);
             lblRoundsText.Name = "lblRoundsText";
             lblRoundsText.Size = new Size(13, 15);
             lblRoundsText.TabIndex = 9;

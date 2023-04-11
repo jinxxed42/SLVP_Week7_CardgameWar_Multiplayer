@@ -11,17 +11,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
     internal class Game
     {
         private List<Card> deck;
-        //private int deckIndex;
         public List<Player> players;
-
-        // Let's remove Result and integrate the properties in Game.cs!
-        // Add player class? Player can then hold the cards and score for itself?
-
-        public Card Player1Card { get; private set; }
-        public Card Player2Card { get; private set; }
-        public string RoundWinner { get; private set; }
-        public int Player1Score { get; private set; }
-        public int Player2Score { get; private set; }
 
         public bool GameOver { get; private set; }
 
@@ -33,24 +23,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         public Game()
         {
 
-            System.Diagnostics.Debug.WriteLine("1 spiller: " + 52 * (int)Math.Ceiling(1 / 2.0)); //  52
-            System.Diagnostics.Debug.WriteLine("2 spiller: " + 52 * (int)Math.Ceiling(2 / 2.0)); //  52
-            System.Diagnostics.Debug.WriteLine("3 spiller: " + 52 * (int)Math.Ceiling(3 / 2.0)); // 104
-            System.Diagnostics.Debug.WriteLine("4 spiller: " + 52 * (int)Math.Ceiling(4 / 2.0)); // 104
-            System.Diagnostics.Debug.WriteLine("5 spiller: " + 52 * (int)Math.Ceiling(5 / 2.0)); // 156
-            System.Diagnostics.Debug.WriteLine("6 spiller: " + 52 * (int)Math.Ceiling(6 / 2.0)); // 156
-
-            #region
-            //This is a region
-            #endregion
         }
 
-        /**
-        public Game(int numPlayers)
-        {
-            
-        }
-        **/
 
         public void StartGame(int numPlayers)
         {
@@ -66,18 +40,13 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public void FillDeck()
         {
-            int deckSize = (int)Math.Ceiling(players.Count / 2.0); // Skal rundes op! VIRKER!! Så skal kortene bare fordeles, eller køres 26 runder.
+            int deckSize = (int)Math.Ceiling(players.Count / 2.0); 
             deck = new List<Card>();
-            //deck = new Card[52];
-            //deckIndex = 0;
 
             foreach (Player p in players)
             {
                 p.Score = 0;
             }
-
-            Player1Score = 0;
-            Player2Score = 0;
 
 
             for (int i = 0; i < deckSize; i++) 
@@ -101,34 +70,15 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                     p.CardDeck.Add(c);
                 }
             }
-            /**
-            foreach (CardSuit cSuit in Enum.GetValues(typeof(CardSuit)))
-            {
-                foreach (CardValue cValue in Enum.GetValues(typeof(CardValue)))
-                {
-                    deck[deckIndex] = new Card(cValue, cSuit);
-                    deckIndex++;
-                }
-            }
-            **/
         }
 
         public Card SelectCard(Player player)
         {
-            //foreach (Player p in players)
-            //{
-                Card c = player.CardDeck[0];
+            Card c = player.CardDeck[0];
             player.CardDeck.RemoveAt(0);
-            //}
-
-            //int index = rand.Next(0, deck.Count - 1);
-            //Card c = deck[index];
-            //deck.RemoveAt(index);
             return c;
         }
 
-        // SKAL FIKSES. DER BLIVER TRUKKET NOGET KORT EFTER SIDSTE RUNDE, SELVOM VINDER ERKLÆRES!
-        // Virker bare til at vinderen erklæres, før kortet er trukket hyrh. Det løses ved messagebox i form i stedet.
         public void PlayRound()
         {
             CardValue highestValue = CardValue.Ace;
