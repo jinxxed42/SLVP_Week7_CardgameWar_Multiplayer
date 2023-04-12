@@ -93,7 +93,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(484, 561);
+            ClientSize = new Size(459, 561);
             Controls.Add(lblRoundsText);
             Controls.Add(lblRounds);
             Controls.Add(label1);

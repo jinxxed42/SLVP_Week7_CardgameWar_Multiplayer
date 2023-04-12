@@ -21,12 +21,6 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         private static Random _rand = new Random();
 
-        public Game()
-        {
-
-        }
-
-
         public void StartGame(int numPlayers)
         {
             GameOver = false;

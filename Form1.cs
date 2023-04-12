@@ -27,7 +27,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 //rounds = 0;
                 tbNumPlayers.Enabled = false;
 
-                this.Size = new Size(500, 600);
+                this.Size = new Size(475, 600);
 
 
                 //int numPlayers = int.Parse(tbNumPlayers.Text);
@@ -53,6 +53,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
                     addedPanels++;
                 }
+                dynamicPanel.UpdateLayout();
                 this.Controls.Add(dynamicPanel);
 
                 g.FillDeck();

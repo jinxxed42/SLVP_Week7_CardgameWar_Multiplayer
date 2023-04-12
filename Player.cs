@@ -10,7 +10,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
     {
         public int Score { get; set; }
         
-        public Queue<Card> CardDeck { get; private set; } // The private part still allows for adding elsewhere.
+        public Queue<Card> CardDeck { get; private set; } // The private part still allows for enqueueing elsewhere.
 
         public Card CardDrawn { get; set; }
 
