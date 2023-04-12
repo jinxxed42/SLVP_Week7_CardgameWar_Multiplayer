@@ -10,6 +10,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         public Form1()
         {
             InitializeComponent();
+            playerControls = new List<PlayerControl>();
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
@@ -17,20 +18,27 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
             if (btnPlay.Text == "Start game!")
             {
+                if (!int.TryParse(tbNumPlayers.Text, out int numPlayers) || numPlayers < 2)
+                {
+                    MessageBox.Show("You need to enter a valid integer above 1.");
+                    return;
+                }
+                g.StartGame(numPlayers);
                 //rounds = 0;
                 tbNumPlayers.Enabled = false;
 
                 this.Size = new Size(500, 600);
 
-                int numPlayers = int.Parse(tbNumPlayers.Text);
-                g.StartGame(numPlayers);
+
+                //int numPlayers = int.Parse(tbNumPlayers.Text);
+
 
                 int addedPanels = 0;
 
                 dynamicPanel.ResetLayout();
                 dynamicPanel.Location = new Point(200, 10);
 
-                playerControls = new List<PlayerControl>();
+                //playerControls = new List<PlayerControl>();
 
                 foreach (Player p in g.players)
                 {
@@ -57,7 +65,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 g.PlayRound();
                 //rounds++;
                 lblRoundsText.Text = g.GameRounds.ToString();
-                Update();
+                FormUpdate();
             }
 
         }
@@ -71,12 +79,12 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             }
         }
 
-        internal void Update()
+        internal void FormUpdate()
         {
 
             foreach (PlayerControl p in playerControls)
             {
-                p.Update();
+                p.ControlUpdate();
             }
 
             if (g.GameOver)

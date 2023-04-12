@@ -101,7 +101,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             plcLblScoreText.Text = player.Score.ToString();
         }
 
-        public void Update()
+        public void ControlUpdate()
         {
             plcLblScoreText.Text = player.Score.ToString();
 
