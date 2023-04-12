@@ -14,9 +14,13 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         private int _maxWidth;
         private int _maxHeight;
 
-        private List<UserControl> _userControls = new List<UserControl>();
+        //private List<UserControl> _userControls = new List<UserControl>();
 
-        public IEnumerable<UserControl> UserControls => _userControls;
+        private List<PlayerControl> _playerControls = new List<PlayerControl>();
+
+        //public IEnumerable<UserControl> UserControls => _userControls;
+
+        //public IEnumerable<PlayerControl> 
 
         private void InitializeComponent()
         {
@@ -35,27 +39,27 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         }
 
 
-        public void ResetLayout()
+        internal void ResetLayout()
         {
-            foreach (UserControl userControl in _userControls)
+            foreach (PlayerControl playerControl in _playerControls)
             {
-                Controls.Remove(userControl);
+                Controls.Remove(playerControl);
             }
-            _userControls.Clear();
+            _playerControls.Clear();
             this.Size = new Size(200, 500);
         }
 
-        public void AddControl(UserControl userControl)
+        internal void AddControl(PlayerControl playerControl)
         {
-            _userControls.Add(userControl);
-            Controls.Add(userControl);
+            _playerControls.Add(playerControl);
+            Controls.Add(playerControl);
             UpdateLayout();
         }
 
-        public void RemoveControl(UserControl userControl)
+        internal void RemoveControl(PlayerControl playerControl)
         {
-            _userControls.Remove(userControl);
-            Controls.Remove(userControl);
+            _playerControls.Remove(playerControl);
+            Controls.Remove(playerControl);
             UpdateLayout();
         }
 
@@ -71,9 +75,9 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             int controlsInColumn = 1; // Keep track of how many controls have been added to the current column
             int columnWidth = 0; // Keep track of the maximum width of controls in the column
 
-            foreach (UserControl control in _userControls)
+            foreach (PlayerControl playerControl in _playerControls)
             {
-                control.Location = new Point(xPos, yPos);
+                playerControl.Location = new Point(xPos, yPos);
 
 
                 // Check if we need to start a new column
@@ -86,15 +90,15 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 }
                 else
                 {
-                    yPos += control.Height - 1; 
+                    yPos += playerControl.Height - 1; 
                 }
 
                 // Update variables for next control
-                lastControlYPos = control.Location.Y;
+                lastControlYPos = playerControl.Location.Y;
                 controlsInColumn++;
-                if (control.Width > columnWidth)
+                if (playerControl.Width > columnWidth)
                 {
-                    columnWidth = control.Width;
+                    columnWidth = playerControl.Width;
                 }
                 totalControls++;
 

@@ -5,7 +5,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         Game g = new Game();
         List<PlayerControl> playerControls;
         DynamicPanel dynamicPanel = new DynamicPanel(1200, 520);
-        int rounds = 0;
+        //int rounds = 0;
 
         public Form1()
         {
@@ -17,7 +17,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
             if (btnPlay.Text == "Start game!")
             {
-                rounds = 0;
+                //rounds = 0;
                 tbNumPlayers.Enabled = false;
 
                 this.Size = new Size(500, 600);
@@ -55,8 +55,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             else
             {
                 g.PlayRound();
-                rounds++;
-                lblRoundsText.Text = rounds.ToString();
+                //rounds++;
+                lblRoundsText.Text = g.GameRounds.ToString();
                 Update();
             }
 

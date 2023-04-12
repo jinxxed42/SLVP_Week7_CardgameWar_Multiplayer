@@ -10,8 +10,9 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
     {
         public int Score { get; set; }
 
-        // Gemmer 26 kort per spiller i deres eget private deck. Det er smartere end at trække fra et kæmpe deck?? Ellers skal vi bare køre 26 runder?
-        public List<Card> CardDeck { get; private set; }
+        //public List<Card> CardDeck { get; private set; }
+        
+        public Queue<Card> CardDeck { get; private set; }
 
         public Card CardDrawn { get; set; }
 
@@ -24,7 +25,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public Player(string name)
         {
-            CardDeck = new List<Card>();
+            //CardDeck = new List<Card>();
+            CardDeck = new Queue<Card>();
             Name = name;
         }
     }

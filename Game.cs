@@ -17,8 +17,9 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public string GameWinner { get; private set; }
 
+        public int GameRounds { get; private set; }
 
-        static Random rand = new Random();
+        private static Random _rand = new Random();
 
         public Game()
         {
@@ -29,6 +30,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         public void StartGame(int numPlayers)
         {
             GameOver = false;
+            GameRounds = 0;
             players = new List<Player>();
             for (int i = 0; i < numPlayers; i++) 
             {
@@ -42,11 +44,6 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         {
             int deckSize = (int)Math.Ceiling(players.Count / 2.0); 
             deck = new List<Card>();
-
-            foreach (Player p in players)
-            {
-                p.Score = 0;
-            }
 
 
             for (int i = 0; i < deckSize; i++) 
@@ -62,25 +59,29 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
             foreach (Player p in players)
             {
+                p.Score = 0;
+
                 for (int i = 0; i < 26; i++) 
                 { 
-                    int index = rand.Next(0, deck.Count - 1);
+                    int index = _rand.Next(0, deck.Count - 1);
                     Card c = deck[index];
-                    deck.RemoveAt(index);               
-                    p.CardDeck.Add(c);
+                    deck.RemoveAt(index);
+                    p.CardDeck.Enqueue(c);
+                    //p.CardDeck.Add(c);
                 }
             }
         }
 
         public Card SelectCard(Player player)
         {
-            Card c = player.CardDeck[0];
-            player.CardDeck.RemoveAt(0);
-            return c;
+            //Card c = player.CardDeck[0];
+            //player.CardDeck.RemoveAt(0);
+            return player.CardDeck.Dequeue();
         }
 
         public void PlayRound()
         {
+            GameRounds++;
             CardValue highestValue = CardValue.Ace;
             foreach (Player p in players)
             {
@@ -112,10 +113,12 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             }
             else
             {
-                players.Find(p => p.CardDrawn.Value == highestValue).Score += 2;
+                // Since there is only one player with highestValue in this case it will always find a match in the list.
+                // Alert suppressed.
+                players.Find(p => p.CardDrawn.Value == highestValue)!.Score += 2;
             }
 
-            if (players[0].CardDeck.Count == 0)           
+            if (GameRounds == 26)           
             {
                 GameOver = true;
                 int highScore = 0;
@@ -137,11 +140,11 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
                 if (numWinners == 1) 
                 { 
-                    GameWinner = "The game is over and the winner is " + winner.Name;
+                    GameWinner = "The game is over and the winner is " + winner.Name + "!";
                 }
                 else
                 {
-                    GameWinner = "The game is over and it was a draw!";
+                    GameWinner = "The game is over and it was a draw between " + numWinners + " players!";
                 }
 
             }
