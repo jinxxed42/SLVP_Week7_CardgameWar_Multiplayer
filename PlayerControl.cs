@@ -13,14 +13,12 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         private Label plcLblNameText;
         private Label plcLblScoreText;
         private PictureBox plcPicturebox;
-        private Player player;
+        private Player player; // _player
 
         public PlayerControl(Player player)
         {
             InitializeComponent();
             this.player = player;
-            //this.Location = new Point(10, 10);
-            //this.Size = new Size(200, 300);
             // Set up the control's layout and other properties here
         }
 

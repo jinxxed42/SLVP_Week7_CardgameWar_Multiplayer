@@ -15,7 +15,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         public Card CardDrawn { get; set; }
 
         public string Name { get; set; }
-
+        
+        // Only used for creating an "empty" Player object that is immediately set to equal an existing Player.
         public Player()
         {
             
@@ -23,7 +24,6 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public Player(string name)
         {
-            //CardDeck = new List<Card>();
             CardDeck = new Queue<Card>();
             Name = name;
         }

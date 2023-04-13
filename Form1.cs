@@ -5,6 +5,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         Game g = new Game();
         List<PlayerControl> playerControls;
         DynamicPanel dynamicPanel = new DynamicPanel(1200, 520);
+        private int _baseWidth = 475;
         //int rounds = 0;
 
         public Form1()
@@ -26,32 +27,22 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 g.StartGame(numPlayers);
                 //rounds = 0;
                 tbNumPlayers.Enabled = false;
-
-                this.Size = new Size(475, 600);
-
-
-                //int numPlayers = int.Parse(tbNumPlayers.Text);
-
-
-                int addedPanels = 0;
-
+              
                 dynamicPanel.ResetLayout();
                 dynamicPanel.Location = new Point(200, 10);
 
-                //playerControls = new List<PlayerControl>();
+                int addedPanels = g.Players.Count;
+                int size = (addedPanels - 1) / 4;
+                if (size > 5) { size = 5; }
+                this.Size = new Size(_baseWidth + 200 * size, this.Height);
 
-                foreach (Player p in g.players)
+                foreach (Player p in g.Players)
                 {
-                    if (addedPanels % 4 == 0 && addedPanels < 24 && addedPanels > 3)
-                    {
-                        this.Size = new Size(this.Width + 200, this.Height);
-                    }
                     PlayerControl userControl = new PlayerControl(p);
                     playerControls.Add(userControl);
 
                     dynamicPanel.AddControl(userControl);
 
-                    addedPanels++;
                 }
                 dynamicPanel.UpdateLayout();
                 this.Controls.Add(dynamicPanel);
@@ -82,7 +73,6 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         internal void FormUpdate()
         {
-
             foreach (PlayerControl p in playerControls)
             {
                 p.ControlUpdate();
