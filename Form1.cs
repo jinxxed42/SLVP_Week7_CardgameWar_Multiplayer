@@ -14,40 +14,10 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             dynamicPanel.Location = new Point(200, 10);
         }
 
-        // PUT IMAGES IN RESOURCE FOLDER!!!
-
         private void btnPlay_Click(object sender, EventArgs e)
         {
             if (btnPlay.Text == "Start game!")
             {
-                string file = AppDomain.CurrentDomain.BaseDirectory;
-
-                var parent = Directory.GetParent(file);
-                if (parent != null)
-                {
-                    parent = parent.Parent;
-                    if (parent != null)
-                    {
-                        parent = parent.Parent;
-                        if (parent != null)
-                        {
-                            parent = parent.Parent;
-                            if (parent != null)
-                            {
-                                file = parent.FullName;
-                                file += @"\Cards\";
-                            }
-                        }
-                    }
-                }
-
-                if (!File.Exists(@"C:\Cards\2C.png") && !File.Exists(file + "2C.png"))
-                {
-                    MessageBox.Show($"I can't locate the card image files.\n\nPlease place them in one of the following folders and try again:\n\nC:\\Cards\\\nor\n{file}");
-                    return;
-                }
-
-
                 if (!int.TryParse(tbNumPlayers.Text, out int numPlayers) || numPlayers < 2)
                 {
                     MessageBox.Show("You need to enter a valid integer above 1.");

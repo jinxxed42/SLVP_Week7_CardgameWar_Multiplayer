@@ -113,21 +113,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             plcLblNameText.Text = player.Name.ToString();
             plcLblScoreText.Text = player.Score.ToString();
 
-            if (File.Exists(@"C:\Cards\gray_back.png")) 
-            { 
-                Image image = Image.FromFile(@"C:\Users\claus\source\repos\SLVP_Week7_CardgameWar_Multiplayer\Cards\gray_back.png");
-                plcPicturebox.Image = image;
-            }
-            else if (File.Exists(file + @"\Cards\gray_back.png"))
-            {
-                Image image = Image.FromFile(file + @"\Cards\gray_back.png");
-                plcPicturebox.Image = image;
-            }
-            else
-            {
-                plcPicturebox.Image = null;
-            }
-            
+            plcPicturebox.Image = Properties.Resources.gray_back;           
         }
 
         public void ControlUpdate()
@@ -135,22 +121,9 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             plcLblScoreText.Text = player.Score.ToString();
 
             string cardString = CardImageFileName(player.CardDrawn);
-            string cardFolder = file + @"\Cards\";
-
-            if (File.Exists(@"C:\Cards\" + cardString))
-            {
-                Image image = Image.FromFile(@"C:\Cards\" + cardString);
-                plcPicturebox.Image = image;
-            }
-            else if (File.Exists(cardFolder + cardString)) 
-            { 
-                Image image = Image.FromFile(cardFolder + cardString);
-                plcPicturebox.Image = image;
-            }
-            else
-            {
-                plcPicturebox.Image = null;
-            }
+            
+            Image image = (Image)Properties.Resources.ResourceManager.GetObject(cardString);
+            plcPicturebox.Image = image;
         }
 
         internal string CardImageFileName(Card card)
@@ -159,31 +132,31 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             switch (card.Value)
             {
                 case CardValue.Two:
-                    valueCode = "2";
+                    valueCode = "_2"; // For some reason it put a _ in front when adding as a resource.
                     break;
                 case CardValue.Three:
-                    valueCode = "3";
+                    valueCode = "_3";
                     break;
                 case CardValue.Four:
-                    valueCode = "4";
+                    valueCode = "_4";
                     break;
                 case CardValue.Five:
-                    valueCode = "5";
+                    valueCode = "_5";
                     break;
                 case CardValue.Six:
-                    valueCode = "6";
+                    valueCode = "_6";
                     break;
                 case CardValue.Seven:
-                    valueCode = "7";
+                    valueCode = "_7";
                     break;
                 case CardValue.Eight:
-                    valueCode = "8";
+                    valueCode = "_8";
                     break;
                 case CardValue.Nine:
-                    valueCode = "9";
+                    valueCode = "_9";
                     break;
                 case CardValue.Ten:
-                    valueCode = "10";
+                    valueCode = "_10";
                     break;
                 case CardValue.Jack:
                     valueCode = "J";
@@ -220,7 +193,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                     throw new ArgumentException("Invalid card suit");
             }
 
-            return valueCode + suitCode + ".png";
+            //return valueCode + suitCode + ".png";
+            return valueCode + suitCode;
         }
 
     }
