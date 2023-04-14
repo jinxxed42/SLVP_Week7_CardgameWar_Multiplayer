@@ -123,6 +123,10 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 Image image = Image.FromFile(file + @"\Cards\gray_back.png");
                 plcPicturebox.Image = image;
             }
+            else
+            {
+                plcPicturebox.Image = null;
+            }
             
         }
 
@@ -142,6 +146,10 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             { 
                 Image image = Image.FromFile(cardFolder + cardString);
                 plcPicturebox.Image = image;
+            }
+            else
+            {
+                plcPicturebox.Image = null;
             }
         }
 

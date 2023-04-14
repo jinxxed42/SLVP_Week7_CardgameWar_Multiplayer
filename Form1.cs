@@ -14,6 +14,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             dynamicPanel.Location = new Point(200, 10);
         }
 
+        // PUT IMAGES IN RESOURCE FOLDER!!!
+
         private void btnPlay_Click(object sender, EventArgs e)
         {
             if (btnPlay.Text == "Start game!")

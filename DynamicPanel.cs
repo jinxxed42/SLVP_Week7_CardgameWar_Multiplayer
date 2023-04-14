@@ -60,21 +60,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                     yPos += playerControl.Height - 1; 
                 }
 
-                //Width = xPos + playerControl.Width;
-            }
-
-            /**
-            if (Width > _maxWidth)
-            {
-                Width = _maxWidth;
-                this.AutoScroll = true;
-
-            }
-            this.Size = new Size(Width, _maxHeight);
-            **/
-
-            //this.Size = new Size(_width, _height);
-            
+            }           
         }
     }
 }
