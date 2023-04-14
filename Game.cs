@@ -10,8 +10,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 {
     internal class Game
     {
-        private List<Card> _deck; 
-        public List<Player> Players { get; private set; } // Is instantiated in the constructor.
+        private List<Card> _deck = new List<Card>();
+        public List<Player> Players { get; private set; } = new List<Player>();
 
         public bool GameOver { get; private set; }
 
@@ -25,7 +25,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         {
             GameOver = false;
             GameRounds = 0;
-            Players = new List<Player>();
+            Players.Clear(); 
             for (int i = 0; i < numPlayers; i++) 
             {
                 Player p = new Player($"Player{i+1}");
@@ -36,8 +36,8 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public void FillDeck()
         {
-            int deckSize = (int)Math.Ceiling(Players.Count / 2.0); 
-            _deck = new List<Card>();
+            int deckSize = (int)Math.Ceiling(Players.Count / 2.0);
+            _deck.Clear();
 
             for (int i = 0; i < deckSize; i++) 
             {

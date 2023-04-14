@@ -8,27 +8,42 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 {
     internal class PlayerControl : UserControl
     {
-        private Label plcLblName;
-        private Label plcLblScore;
-        private Label plcLblNameText;
-        private Label plcLblScoreText;
-        private PictureBox plcPicturebox;
+        private Label plcLblName = new Label();
+        private Label plcLblScore = new Label();
+        private Label plcLblNameText = new Label();
+        private Label plcLblScoreText = new Label();
+        private PictureBox plcPicturebox = new PictureBox();
         private Player player; // _player
+        private string file = "";
 
         public PlayerControl(Player player)
         {
             InitializeComponent();
             this.player = player;
+
+            file = AppDomain.CurrentDomain.BaseDirectory;
+            var parent = Directory.GetParent(file);
+            if (parent != null)
+            {
+                parent = parent.Parent;
+                if (parent != null)
+                {
+                    parent = parent.Parent;
+                    if (parent != null)
+                    {
+                        parent = parent.Parent;
+                        if (parent != null)
+                        {
+                            file = parent.FullName;
+                        }
+                    }
+                }
+            }
             // Set up the control's layout and other properties here
         }
 
         private void InitializeComponent()
         {
-            plcLblName = new Label();
-            plcLblScore = new Label();
-            plcLblNameText = new Label();
-            plcLblScoreText = new Label();
-            plcPicturebox = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)plcPicturebox).BeginInit();
             SuspendLayout();
             // 
@@ -97,6 +112,18 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         {
             plcLblNameText.Text = player.Name.ToString();
             plcLblScoreText.Text = player.Score.ToString();
+
+            if (File.Exists(@"C:\Cards\gray_back.png")) 
+            { 
+                Image image = Image.FromFile(@"C:\Users\claus\source\repos\SLVP_Week7_CardgameWar_Multiplayer\Cards\gray_back.png");
+                plcPicturebox.Image = image;
+            }
+            else if (File.Exists(file + @"\Cards\gray_back.png"))
+            {
+                Image image = Image.FromFile(file + @"\Cards\gray_back.png");
+                plcPicturebox.Image = image;
+            }
+            
         }
 
         public void ControlUpdate()
@@ -104,11 +131,18 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             plcLblScoreText.Text = player.Score.ToString();
 
             string cardString = CardImageFileName(player.CardDrawn);
-            string cardFolder = @"C:\Users\claus\source\repos\SLVP_Week7_CardgameWar_Multiplayer\Cards\";
+            string cardFolder = file + @"\Cards\";
 
-            Image image = Image.FromFile(cardFolder + cardString);
-            plcPicturebox.Image = image;
-
+            if (File.Exists(@"C:\Cards\" + cardString))
+            {
+                Image image = Image.FromFile(@"C:\Cards\" + cardString);
+                plcPicturebox.Image = image;
+            }
+            else if (File.Exists(cardFolder + cardString)) 
+            { 
+                Image image = Image.FromFile(cardFolder + cardString);
+                plcPicturebox.Image = image;
+            }
         }
 
         internal string CardImageFileName(Card card)

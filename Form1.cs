@@ -4,37 +4,61 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
     {
         Game g = new Game();
         List<PlayerControl> playerControls;
-        DynamicPanel dynamicPanel = new DynamicPanel(1200, 520);
         private int _baseWidth = 475;
-        //int rounds = 0;
+        DynamicPanel dynamicPanel = new DynamicPanel();
 
         public Form1()
         {
             InitializeComponent();
             playerControls = new List<PlayerControl>();
+            dynamicPanel.Location = new Point(200, 10);
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-
             if (btnPlay.Text == "Start game!")
             {
+                string file = AppDomain.CurrentDomain.BaseDirectory;
+
+                var parent = Directory.GetParent(file);
+                if (parent != null)
+                {
+                    parent = parent.Parent;
+                    if (parent != null)
+                    {
+                        parent = parent.Parent;
+                        if (parent != null)
+                        {
+                            parent = parent.Parent;
+                            if (parent != null)
+                            {
+                                file = parent.FullName;
+                                file += @"\Cards\";
+                            }
+                        }
+                    }
+                }
+
+                if (!File.Exists(@"C:\Cards\2C.png") && !File.Exists(file + "2C.png"))
+                {
+                    MessageBox.Show($"I can't locate the card image files.\n\nPlease place them in one of the following folders and try again:\n\nC:\\Cards\\\nor\n{file}");
+                    return;
+                }
+
+
                 if (!int.TryParse(tbNumPlayers.Text, out int numPlayers) || numPlayers < 2)
                 {
                     MessageBox.Show("You need to enter a valid integer above 1.");
                     return;
                 }
                 g.StartGame(numPlayers);
-                //rounds = 0;
                 tbNumPlayers.Enabled = false;
-              
-                dynamicPanel.ResetLayout();
-                dynamicPanel.Location = new Point(200, 10);
+               
+                dynamicPanel.ResetControls();
 
-                int addedPanels = g.Players.Count;
-                int size = (addedPanels - 1) / 4;
+                int size = (numPlayers - 1) / 4;
                 if (size > 5) { size = 5; }
-                this.Size = new Size(_baseWidth + 200 * size, this.Height);
+                this.Size = new Size(_baseWidth + 200 * size, this.Height);                
 
                 foreach (Player p in g.Players)
                 {
@@ -44,7 +68,9 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                     dynamicPanel.AddControl(userControl);
 
                 }
-                dynamicPanel.UpdateLayout();
+                dynamicPanel.UpdateControls();
+                dynamicPanel.Size = new Size(200 * (size + 1), 520);
+
                 this.Controls.Add(dynamicPanel);
 
                 g.FillDeck();
@@ -55,7 +81,6 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             else
             {
                 g.PlayRound();
-                //rounds++;
                 lblRoundsText.Text = g.GameRounds.ToString();
                 FormUpdate();
             }

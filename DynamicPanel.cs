@@ -10,47 +10,33 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 {
     public partial class DynamicPanel : Panel
     {
-
-        private int _maxWidth;
-        private int _maxHeight;
-
         private List<PlayerControl> _playerControls = new List<PlayerControl>();
 
-        public DynamicPanel(int maxWidth, int maxHeight)
+        public DynamicPanel()
         {
-            _maxWidth = maxWidth;
-            _maxHeight = maxHeight; 
+            this.AutoScroll = true;
         }
 
 
-        internal void ResetLayout()
-        {
-            foreach (PlayerControl playerControl in _playerControls)
-            {
-                Controls.Remove(playerControl);
+        internal void ResetControls()
+        {                       
+            if (_playerControls.Any()) { 
+                foreach (PlayerControl playerControl in _playerControls)
+                {
+                    Controls.Remove(playerControl);
+                }            
+                _playerControls.Clear();
             }
-            _playerControls.Clear();
-            this.Size = new Size(200, 500);
         }
+        
 
         internal void AddControl(PlayerControl playerControl)
         {
             _playerControls.Add(playerControl);
             Controls.Add(playerControl);
-            //UpdateLayout(); // For skørt at kalde den her HVER add!!
         }
 
-        /**
-        // Not needed since I reset every gamestart.
-        internal void RemoveControl(PlayerControl playerControl)
-        {
-            _playerControls.Remove(playerControl);
-            Controls.Remove(playerControl);
-            UpdateLayout(); // For skørt at kalde den her HVER remove!!
-        }
-        **/
-
-        internal void UpdateLayout()
+        internal void UpdateControls()
         {
 
             int yPos = 0;
@@ -74,16 +60,21 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                     yPos += playerControl.Height - 1; 
                 }
 
-                Width = xPos + playerControl.Width;
+                //Width = xPos + playerControl.Width;
             }
 
+            /**
             if (Width > _maxWidth)
             {
                 Width = _maxWidth;
                 this.AutoScroll = true;
-            }
 
+            }
             this.Size = new Size(Width, _maxHeight);
+            **/
+
+            //this.Size = new Size(_width, _height);
+            
         }
     }
 }

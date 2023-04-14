@@ -9,12 +9,12 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
     internal class Player
     {
         public int Score { get; set; }
-        
-        public Queue<Card> CardDeck { get; private set; } // The private part still allows for enqueueing elsewhere.
+
+        public Queue<Card> CardDeck { get; private set; } = new Queue<Card>(); // The private part still allows for enqueueing elsewhere.
 
         public Card CardDrawn { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         
         // Only used for creating an "empty" Player object that is immediately set to equal an existing Player.
         public Player()
@@ -24,7 +24,6 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public Player(string name)
         {
-            CardDeck = new Queue<Card>();
             Name = name;
         }
     }
