@@ -13,32 +13,12 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         private Label plcLblNameText = new Label();
         private Label plcLblScoreText = new Label();
         private PictureBox plcPicturebox = new PictureBox();
-        private Player player; // _player
-        private string file = "";
+        private Player _player; 
 
         public PlayerControl(Player player)
         {
             InitializeComponent();
-            this.player = player;
-
-            file = AppDomain.CurrentDomain.BaseDirectory;
-            var parent = Directory.GetParent(file);
-            if (parent != null)
-            {
-                parent = parent.Parent;
-                if (parent != null)
-                {
-                    parent = parent.Parent;
-                    if (parent != null)
-                    {
-                        parent = parent.Parent;
-                        if (parent != null)
-                        {
-                            file = parent.FullName;
-                        }
-                    }
-                }
-            }
+            this._player = player;
             // Set up the control's layout and other properties here
         }
 
@@ -110,19 +90,19 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public void Initialize()
         {
-            plcLblNameText.Text = player.Name.ToString();
-            plcLblScoreText.Text = player.Score.ToString();
+            plcLblNameText.Text = _player.Name.ToString();
+            plcLblScoreText.Text = _player.Score.ToString();
 
             plcPicturebox.Image = Properties.Resources.gray_back;           
         }
 
         public void ControlUpdate()
         {
-            plcLblScoreText.Text = player.Score.ToString();
+            plcLblScoreText.Text = _player.Score.ToString();
 
-            string cardString = CardImageFileName(player.CardDrawn);
+            string cardString = CardImageFileName(_player.CardDrawn);
             
-            Image image = (Image)Properties.Resources.ResourceManager.GetObject(cardString);
+            Image? image = Properties.Resources.ResourceManager.GetObject(cardString) as Image; // We know it exists since it's in the resources.
             plcPicturebox.Image = image;
         }
 
@@ -132,7 +112,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             switch (card.Value)
             {
                 case CardValue.Two:
-                    valueCode = "_2"; // For some reason it put a _ in front when adding as a resource.
+                    valueCode = "_2"; // _ in front of numbers when added as a resource.
                     break;
                 case CardValue.Three:
                     valueCode = "_3";
@@ -192,8 +172,6 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 default:
                     throw new ArgumentException("Invalid card suit");
             }
-
-            //return valueCode + suitCode + ".png";
             return valueCode + suitCode;
         }
 

@@ -18,8 +18,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         
         // Only used for creating an "empty" Player object that is immediately set to equal an existing Player.
         public Player()
-        {
-            
+        {            
         }
 
         public Player(string name)

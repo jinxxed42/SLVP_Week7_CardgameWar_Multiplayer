@@ -4,7 +4,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
     {
         Game g = new Game();
         List<PlayerControl> playerControls;
-        private int _baseWidth = 475;
+        private int _baseWidth = 475; // The starting width of the form if no resizing needed.
         DynamicPanel dynamicPanel = new DynamicPanel();
 
         public Form1()
@@ -26,8 +26,9 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 g.StartGame(numPlayers);
                 tbNumPlayers.Enabled = false;
                
-                dynamicPanel.ResetControls();
+                dynamicPanel.ResetControls(); // Making sure to reset controls on the panel if any was added.
 
+                // Defining the maximum allowed size of the form and panel.
                 int size = (numPlayers - 1) / 4;
                 if (size > 5) { size = 5; }
                 this.Size = new Size(_baseWidth + 200 * size, this.Height);                
@@ -56,7 +57,6 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 lblRoundsText.Text = g.GameRounds.ToString();
                 FormUpdate();
             }
-
         }
 
 
@@ -83,5 +83,4 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
             }
         }
     }
-
 }

@@ -36,9 +36,9 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
 
         public void FillDeck()
         {
+            // For every 2 players create a full main deck of cards.
             int deckSize = (int)Math.Ceiling(Players.Count / 2.0);
             _deck.Clear();
-
             for (int i = 0; i < deckSize; i++) 
             {
                 foreach (CardSuit cSuit in Enum.GetValues(typeof(CardSuit)))
@@ -50,10 +50,10 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 }
             }
 
+            // Randomly assign cards to players.
             foreach (Player p in Players)
             {
                 p.Score = 0;
-
                 for (int i = 0; i < 26; i++) 
                 { 
                     int index = _rand.Next(0, _deck.Count - 1);
@@ -72,7 +72,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
         public void PlayRound()
         {
             GameRounds++;
-            CardValue highestValue = CardValue.Ace;
+            CardValue highestValue = CardValue.Ace; // Lowest value card in this implementation, so the highest value is at least this.
             foreach (Player p in Players)
             {
                 p.CardDrawn = SelectCard(p);
@@ -92,6 +92,7 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 }
             }
 
+            // If more than one player has the highest score each gets 1 point, else the one player gets 2 points.
             if (numPlayersWithMaxValue > 1) { 
                 foreach (Player p in Players)
                 {
@@ -108,12 +109,14 @@ namespace SLVP_Week7_CardgameWar_Multiplayer
                 Players.Find(p => p.CardDrawn.Value == highestValue)!.Score += 2;
             }
 
+            // 26 rounds played means the game is over.
             if (GameRounds == 26)           
             {
                 GameOver = true;
                 int highScore = 0;
                 int numWinners = 1;
                 Player winner = new Player();
+                // Finding the highest-scoring player(s).
                 foreach (Player p in Players)
                 {
                     if (p.Score > highScore)
